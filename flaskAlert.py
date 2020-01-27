@@ -10,6 +10,9 @@ app.secret_key = 'aYT>.L$kk2h>!'
 app.config['BASIC_AUTH_USERNAME'] = 'XXXUSERNAME'
 app.config['BASIC_AUTH_PASSWORD'] = 'XXXPASSWORD'
 
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True 
+app.config['JSON_AS_ASCII'] = False
+
 basic_auth = BasicAuth(app)
 app.config['BASIC_AUTH_FORCE'] = True
 bot = telegram.Bot(token="botToken")
