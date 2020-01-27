@@ -1,6 +1,6 @@
 FROM alpine:3.7
 
-LABEL maintainer "Carlos Augusto Malucelli <malucellicarlos@gmail.com>"
+LABEL maintainer "Anatoly Pugachev <matorola@gmail.com>"
 
 RUN apk update \
 		&& apk add py-pip bash gcc python-dev musl-dev libffi-dev openssl-dev \
