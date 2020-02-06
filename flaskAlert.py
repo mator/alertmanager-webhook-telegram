@@ -10,8 +10,9 @@ app.secret_key = 'aYT>.L$kk2h>!'
 app.config['BASIC_AUTH_USERNAME'] = 'XXXUSERNAME'
 app.config['BASIC_AUTH_PASSWORD'] = 'XXXPASSWORD'
 
+#app.config['JSON_AS_ASCII'] = False
+#app.config['JSON_SORT_KEYS'] = False
 app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True 
-app.config['JSON_AS_ASCII'] = False
 
 basic_auth = BasicAuth(app)
 app.config['BASIC_AUTH_FORCE'] = True
@@ -21,7 +22,7 @@ chatID = "xchatIDx"
 @app.route('/alert', methods = ['POST'])
 def postAlertmanager():
 
-    content = json.loads(request.get_data())
+    content = json.loads(str(request.get_data()).replace('\\"',"'"))
     with open("Output.txt", "w") as text_file:
         text_file.write("{0}".format(content))
     try:
