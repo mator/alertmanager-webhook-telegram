@@ -23,6 +23,7 @@ chatID = "xchatIDx"
 def postAlertmanager():
 
     content = json.loads(str(request.get_data()).replace('\\"',"'"))
+    bot.sendMessage(chat_id=chatID, text="loads pass")
     with open("Output.txt", "w") as text_file:
         text_file.write("{0}".format(content))
     try:
@@ -45,8 +46,8 @@ def postAlertmanager():
 
             bot.sendMessage(chat_id=chatID, text=message)
             return "Alert OK", 200
-    except:
-        bot.sendMessage(chat_id=chatID, text="Error!")
+    except Exception as e:
+        bot.sendMessage(chat_id=chatID, text="Error! ["+str(e)+"]")
         return "Alert nOK", 200
 
 
