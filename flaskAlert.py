@@ -40,7 +40,7 @@ def postAlertmanager():
             else:
                 message += """Instance: """+alert['labels']['instance']+""" \n"""
 
-            message += ""\n\n"""+str(alert['annotations'])+""""""
+            message += """\n\n"""+str(alert['annotations'])+""""""
 
             bot.sendMessage(chat_id=chatID, text=message)
             return "Alert OK", 200
