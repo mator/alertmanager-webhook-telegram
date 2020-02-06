@@ -43,6 +43,7 @@ def postAlertmanager():
             message += """\n\n"""+str(alert['annotations'])+""""""
 
             bot.sendMessage(chat_id=chatID, text=message)
+	    app.logger.info('message with status: %s is sent', alert['status'])
             return "Alert OK", 200
     except Exception as e:
         bot.sendMessage(chat_id=chatID, text="Error! ["+str(e)+"]")
