@@ -21,12 +21,10 @@ chatID = "xchatIDx"
 
 @app.route('/alert', methods = ['POST'])
 def postAlertmanager():
-
-    content = json.loads(str(request.get_data()).replace('\\"',"'"))
-    bot.sendMessage(chat_id=chatID, text="loads pass")
-    with open("Output.txt", "w") as text_file:
-        text_file.write("{0}".format(content))
     try:
+        content = json.loads(str(request.get_data()).replace('\\"',"'"))
+        with open("Output.txt", "w") as text_file:
+            text_file.write("{0}".format(content))
         for alert in content['alerts']:
             message = """Status: """+alert['status']+""" \n"""
             message += """Alertname: """+alert['labels']['alertname']+""" \n"""
@@ -42,7 +40,7 @@ def postAlertmanager():
             else:
                 message += """Instance: """+alert['labels']['instance']+""" \n"""
 
-            message += """\n\n"""+alert['annotations']['description']+""""""
+            message += ""\n\n"""+str(alert['annotations'])+""""""
 
             bot.sendMessage(chat_id=chatID, text=message)
             return "Alert OK", 200
